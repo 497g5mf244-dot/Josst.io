@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portafolio de Josst: sitios web y herramientas interactivas que hemos construido.">
+<meta property="og:title" content="Portafolio — Josst">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Portafolio — Josst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="index.html" class="wordmark">JO<span>SST</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menú</button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="precios.html">Precios</a>
+      <a href="portafolio.html">Portafolio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:50px;">
+  <div class="wrap">
+    <span class="eyebrow">Portafolio</span>
+    <h1>Proyectos que hemos construido</h1>
+    <p class="lede">Cada sitio se diseña desde cero, a la medida del negocio que representa.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="portfolio-card reveal">
+      <img src="assets/portfolio-salmek.jpg" alt="Sitio web de Grupo Salmek">
+      <div class="portfolio-card-body">
+        <h3>Grupo Salmek</h3>
+        <p>Sitio para un despacho de consultoría, contabilidad y fiscal. Incluye un cuestionario interactivo de diagnóstico que recomienda a cada visitante el servicio adecuado a su situación, y los dirige directo al formulario de contacto correspondiente.</p>
+        <div class="tag-row">
+          <span class="tag">Sitio a la medida</span>
+          <span class="tag">Herramienta interactiva</span>
+          <span class="tag">Múltiples páginas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODO: agrega aquí más proyectos conforme los vayas entregando, con el mismo formato de portfolio-card -->
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-body" style="text-align:center; padding:56px 28px;">
+        <h3 style="color:var(--muted);">Tu proyecto podría estar aquí</h3>
+        <p>Cada sitio nuevo se suma a este portafolio conforme se va publicando.</p>
+      </div>
+    </div>
+
+    <div class="cta-band reveal" style="margin-top:40px;">
+      <h2>¿Quieres ser el siguiente proyecto?</h2>
+      <p>Cuéntanos sobre tu negocio y empecemos a construir.</p>
+      <a href="cuestionario.html" class="btn btn-primary">Cuéntanos de tu proyecto</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Josst. Todos los derechos reservados.</span>
+    <span>contacto@josst.io</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

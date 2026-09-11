@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cuéntanos sobre tu negocio y tu proyecto de sitio web con Josst.">
+<meta property="og:title" content="Cuéntanos de tu proyecto — Josst">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Cuéntanos de tu proyecto — Josst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px 28px;
+    margin-top:24px;
+  }
+  .card h2{font-size:1.3rem; margin-bottom:6px;}
+  .card p.hint{color:var(--muted); font-size:0.92rem; margin:0 0 22px;}
+  label{display:block; font-size:0.92rem; font-weight:600; margin-bottom:6px;}
+  .field{margin-bottom:20px;}
+  .field:last-child{margin-bottom:0;}
+  input[type="text"], input[type="email"], textarea{
+    width:100%;
+    padding:12px 14px;
+    border:2px solid var(--line);
+    border-radius:6px;
+    font-family:inherit;
+    font-size:0.96rem;
+    background:var(--paper);
+    color:var(--ink);
+  }
+  textarea{min-height:90px; resize:vertical;}
+  input:focus, textarea:focus{outline:none; border-color:var(--coral);}
+  .choice-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .choice{position:relative;}
+  .choice input{position:absolute; opacity:0; width:1px; height:1px;}
+  .choice label{
+    display:inline-block; margin:0; padding:9px 16px;
+    border:2px solid var(--line); border-radius:20px;
+    font-size:0.9rem; font-weight:600; cursor:pointer;
+    color:var(--muted); transition:all 0.15s ease;
+  }
+  .choice input:checked + label{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .radio-row{display:flex; flex-direction:column; gap:10px;}
+  .radio-row .choice label{border-radius:6px; display:block; padding:11px 14px;}
+  .submit-row{text-align:center; margin-top:32px;}
+  #resultCard{display:none;}
+  #summaryBox{
+    width:100%; min-height:320px; font-family:'Inter', monospace;
+    font-size:0.86rem; padding:16px; border:2px solid var(--line);
+    border-radius:6px; background:var(--paper); white-space:pre-wrap;
+  }
+  .result-actions{display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;}
+  #copyStatus{font-size:0.88rem; color:var(--blue); margin-top:10px; min-height:1.2em;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="index.html" class="wordmark">JO<span>SST</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menú</button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="precios.html">Precios</a>
+      <a href="portafolio.html">Portafolio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow-small">Empecemos</span>
+      <h2>Cuéntanos sobre tu negocio y tu proyecto</h2>
+      <p>Mientras más detalle nos des, más preciso va a quedar tu sitio. Al final le das clic a "Enviar" y nos llega directo.</p>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <form id="intakeForm">
+
+      <div class="card reveal">
+        <h2>1. El negocio</h2>
+        <p class="hint">Lo básico para entender a quién le vas a hablar.</p>
+        <div class="field">
+          <label for="nombreNegocio">Nombre del negocio</label>
+          <input type="text" id="nombreNegocio" name="nombreNegocio">
+        </div>
+        <div class="field">
+          <label for="giro">¿A qué se dedica? (giro / industria)</label>
+          <input type="text" id="giro" name="giro" placeholder="Ej. panadería, despacho legal, taller mecánico...">
+        </div>
+        <div class="field">
+          <label for="descripcion">Descríbelo en 2-3 frases, como si se lo explicaras a un desconocido</label>
+          <textarea id="descripcion" name="descripcion"></textarea>
+        </div>
+        <div class="field">
+          <label for="publico">¿A quién le vende principalmente?</label>
+          <input type="text" id="publico" name="publico" placeholder="Ej. familias de la zona, otras empresas, jóvenes profesionistas...">
+        </div>
+        <div class="field">
+          <label for="diferenciador">¿Qué lo hace diferente de la competencia?</label>
+          <textarea id="diferenciador" name="diferenciador"></textarea>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>2. Contenido</h2>
+        <p class="hint">Qué ya existe y qué hay que crear desde cero.</p>
+        <div class="field">
+          <label>¿Ya tiene textos escritos (descripciones, historia, servicios)?</label>
+          <div class="radio-row">
+            <div class="choice"><input type="radio" id="textoSi" name="tieneTextos" value="Sí, ya tiene textos"><label for="textoSi">Sí, ya tiene textos</label></div>
+            <div class="choice"><input type="radio" id="textoParcial" name="tieneTextos" value="Tiene algo, falta completar"><label for="textoParcial">Tiene algo, falta completar</label></div>
+            <div class="choice"><input type="radio" id="textoNo" name="tieneTextos" value="No, hay que redactarlo todo"><label for="textoNo">No, hay que redactarlo todo</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>¿Ya tiene logo e imágenes propias?</label>
+          <div class="radio-row">
+            <div class="choice"><input type="radio" id="logoSi" name="tieneLogo" value="Sí, tiene logo y fotos"><label for="logoSi">Sí, tiene logo y fotos</label></div>
+            <div class="choice"><input type="radio" id="logoParcial" name="tieneLogo" value="Tiene logo, faltan fotos"><label for="logoParcial">Tiene logo, faltan fotos</label></div>
+            <div class="choice"><input type="radio" id="logoNo" name="tieneLogo" value="No tiene nada de esto"><label for="logoNo">No tiene nada de esto</label></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>3. Estilo visual</h2>
+        <p class="hint">Cómo quiere que se sienta el sitio.</p>
+        <div class="field">
+          <label>¿Cómo describiría el estilo que busca?</label>
+          <div class="choice-grid" id="estiloGrid">
+            <div class="choice"><input type="checkbox" id="e1" value="Moderno / minimalista"><label for="e1">Moderno / minimalista</label></div>
+            <div class="choice"><input type="checkbox" id="e2" value="Clásico / formal"><label for="e2">Clásico / formal</label></div>
+            <div class="choice"><input type="checkbox" id="e3" value="Cálido / cercano"><label for="e3">Cálido / cercano</label></div>
+            <div class="choice"><input type="checkbox" id="e4" value="Colorido / divertido"><label for="e4">Colorido / divertido</label></div>
+            <div class="choice"><input type="checkbox" id="e5" value="Elegante / premium"><label for="e5">Elegante / premium</label></div>
+            <div class="choice"><input type="checkbox" id="e6" value="Técnico / industrial"><label for="e6">Técnico / industrial</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="colores">¿Colores de marca o que le gusten? (opcional)</label>
+          <input type="text" id="colores" name="colores" placeholder="Ej. azul marino y dorado">
+        </div>
+        <div class="field">
+          <label for="referencias">¿Algún sitio web que le guste como referencia?</label>
+          <input type="text" id="referencias" name="referencias">
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>4. Secciones del sitio</h2>
+        <p class="hint">Qué páginas o secciones necesita.</p>
+        <div class="field">
+          <div class="choice-grid" id="seccionesGrid">
+            <div class="choice"><input type="checkbox" id="s1" value="Inicio"><label for="s1">Inicio</label></div>
+            <div class="choice"><input type="checkbox" id="s2" value="Servicios / Productos"><label for="s2">Servicios / Productos</label></div>
+            <div class="choice"><input type="checkbox" id="s3" value="Nosotros / Historia"><label for="s3">Nosotros / Historia</label></div>
+            <div class="choice"><input type="checkbox" id="s4" value="Portafolio / Galería"><label for="s4">Portafolio / Galería</label></div>
+            <div class="choice"><input type="checkbox" id="s5" value="Precios"><label for="s5">Precios</label></div>
+            <div class="choice"><input type="checkbox" id="s6" value="Blog / Noticias"><label for="s6">Blog / Noticias</label></div>
+            <div class="choice"><input type="checkbox" id="s7" value="Preguntas frecuentes"><label for="s7">Preguntas frecuentes</label></div>
+            <div class="choice"><input type="checkbox" id="s8" value="Contacto"><label for="s8">Contacto</label></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>5. Funcionalidad</h2>
+        <p class="hint">Qué necesita que el sitio haga, no solo que muestre.</p>
+        <div class="field">
+          <div class="choice-grid" id="funcionesGrid">
+            <div class="choice"><input type="checkbox" id="f1" value="Formulario de contacto"><label for="f1">Formulario de contacto</label></div>
+            <div class="choice"><input type="checkbox" id="f2" value="Botón de WhatsApp"><label for="f2">Botón de WhatsApp</label></div>
+            <div class="choice"><input type="checkbox" id="f3" value="Enlaces a redes sociales"><label for="f3">Enlaces a redes sociales</label></div>
+            <div class="choice"><input type="checkbox" id="f4" value="Reservas o citas en línea"><label for="f4">Reservas o citas en línea</label></div>
+            <div class="choice"><input type="checkbox" id="f5" value="Tienda en línea / pagos"><label for="f5">Tienda en línea / pagos</label></div>
+            <div class="choice"><input type="checkbox" id="f6" value="Mapa de ubicación"><label for="f6">Mapa de ubicación</label></div>
+            <div class="choice"><input type="checkbox" id="f7" value="Varios idiomas"><label for="f7">Varios idiomas</label></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>6. Contacto y publicación</h2>
+        <p class="hint">Para poder terminar el sitio y ponerlo en línea.</p>
+        <div class="field">
+          <label for="correo">Correo de contacto</label>
+          <input type="email" id="correo" name="correo">
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="text" id="telefono" name="telefono">
+        </div>
+        <div class="field">
+          <label for="redes">Redes sociales (usuarios o links)</label>
+          <input type="text" id="redes" name="redes">
+        </div>
+        <div class="field">
+          <label>¿Ya tiene dominio o hosting comprado?</label>
+          <div class="radio-row">
+            <div class="choice"><input type="radio" id="domSi" name="dominio" value="Sí, ya tiene dominio/hosting"><label for="domSi">Sí, ya tiene dominio/hosting</label></div>
+            <div class="choice"><input type="radio" id="domNo" name="dominio" value="No, hay que conseguirlo"><label for="domNo">No, hay que conseguirlo</label></div>
+            <div class="choice"><input type="radio" id="domNS" name="dominio" value="No sabe / no está seguro"><label for="domNS">No sabe / no está seguro</label></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="otros">¿Algo más que debamos saber?</label>
+          <textarea id="otros" name="otros"></textarea>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+
+    <div class="card" id="resultCard">
+      <h2>¡Listo, lo recibimos!</h2>
+      <p class="hint">Este es el resumen que nos llegó. Guarda una copia si quieres.</p>
+      <textarea id="summaryBox" readonly></textarea>
+      <div class="result-actions">
+        <button type="button" class="btn btn-outline" id="copyBtn">Copiar resumen</button>
+      </div>
+      <p id="copyStatus"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Josst. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+const FORM_ENDPOINT = "https://formspree.io/f/xwlkzyda";
+
+const form = document.getElementById('intakeForm');
+const resultCard = document.getElementById('resultCard');
+const summaryBox = document.getElementById('summaryBox');
+const copyStatus = document.getElementById('copyStatus');
+
+function checkedValues(containerId){
+  return Array.from(document.querySelectorAll(`#${containerId} input:checked`))
+    .map(el => el.value).join(', ') || 'No especificado';
+}
+function radioValue(name){
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : 'No especificado';
+}
+function val(id){
+  const el = document.getElementById(id);
+  return el.value.trim() || 'No especificado';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const summary = `RESUMEN DEL PROYECTO — SITIO WEB
+================================
+
+1. EL NEGOCIO
+Nombre: ${val('nombreNegocio')}
+Giro: ${val('giro')}
+Descripción: ${val('descripcion')}
+Público objetivo: ${val('publico')}
+Diferenciador: ${val('diferenciador')}
+
+2. CONTENIDO
+¿Tiene textos?: ${radioValue('tieneTextos')}
+¿Tiene logo/fotos?: ${radioValue('tieneLogo')}
+
+3. ESTILO VISUAL
+Estilo deseado: ${checkedValues('estiloGrid')}
+Colores: ${val('colores')}
+Referencias: ${val('referencias')}
+
+4. SECCIONES DEL SITIO
+${checkedValues('seccionesGrid')}
+
+5. FUNCIONALIDAD
+${checkedValues('funcionesGrid')}
+
+6. CONTACTO Y PUBLICACIÓN
+Correo: ${val('correo')}
+Teléfono/WhatsApp: ${val('telefono')}
+Redes sociales: ${val('redes')}
+Dominio/hosting: ${radioValue('dominio')}
+Notas adicionales: ${val('otros')}
+`;
+
+  summaryBox.value = summary;
+  form.style.display = 'none';
+  resultCard.style.display = 'block';
+  resultCard.scrollIntoView({ behavior: 'smooth' });
+
+  try{
+    const response = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ resumen: summary })
+    });
+    copyStatus.textContent = response.ok
+      ? 'Enviado. Lo recibirás también por correo.'
+      : 'Se generó el resumen, pero el envío automático falló — cópialo y envíalo por si acaso.';
+  }catch(err){
+    copyStatus.textContent = 'Se generó el resumen, pero el envío automático falló — cópialo y envíalo por si acaso.';
+  }
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  try{
+    await navigator.clipboard.writeText(summaryBox.value);
+    copyStatus.textContent = 'Copiado al portapapeles.';
+  }catch(err){
+    summaryBox.select();
+    copyStatus.textContent = 'Selecciona el texto y cópialo con Ctrl+C.';
+  }
+});
+</script>
+</body>
+</html>
