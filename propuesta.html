@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tu propuesta de sitio web de Josst.">
+<meta property="og:title" content="Tu propuesta — Josst">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Tu propuesta — Josst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .package-flag{
+    display:inline-block;
+    background:var(--coral);
+    color:#fff;
+    font-size:0.78rem;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+  #notFound{display:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="index.html" class="wordmark">JO<span>SST</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menú</button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="precios.html">Precios</a>
+      <a href="portafolio.html">Portafolio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<div id="notFound">
+  <section class="hero" style="padding-bottom:60px;">
+    <div class="wrap">
+      <span class="eyebrow">Propuesta</span>
+      <h1>No encontramos ese folio</h1>
+      <p class="lede">Verifica el link que te compartimos, o escríbenos directamente y te ayudamos.</p>
+      <div class="hero-actions">
+        <a href="mi-propuesta.html" class="btn btn-outline">Intentar de nuevo</a>
+        <a href="contacto.html" class="btn btn-primary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="propuestaContent" style="display:none;">
+  <section class="hero" style="padding-bottom:50px;">
+    <div class="wrap">
+      <span class="eyebrow">Propuesta de sitio web</span>
+      <h1>Para <span class="accent" id="negocioNombre"></span></h1>
+      <p class="lede" id="negocioFecha"></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow-small">Sobre esta propuesta</span>
+      </div>
+      <p class="reveal" id="introTexto" style="max-width:70ch; font-size:1.05rem; color:var(--muted);"></p>
+
+      <div class="section-head reveal" style="margin-top:48px;">
+        <span class="eyebrow-small">Qué te entregaremos</span>
+      </div>
+      <ul class="reveal" style="color:var(--muted); font-size:1rem; line-height:1.8;">
+        <li>Tu sitio web publicado y funcionando en internet</li>
+        <li>Los archivos completos del proyecto</li>
+        <li>La propiedad de la cuenta de hosting a tu nombre</li>
+        <li>Las rondas de ajustes incluidas en tu paquete, antes de la entrega final</li>
+      </ul>
+
+      <div class="section-head reveal" style="margin-top:48px;">
+        <span class="eyebrow-small">Paquetes y precios</span>
+        <span id="paqueteFlag" class="package-flag"></span>
+      </div>
+      <div class="pricing-table-wrap reveal">
+        <table class="pricing" id="pricingTable"></table>
+      </div>
+
+      <div class="portfolio-card reveal" id="notaExtraCard" style="margin-top:24px; display:none;">
+        <div class="portfolio-card-body">
+          <p id="notaExtraTexto" style="margin:0;"></p>
+        </div>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:48px;">
+        <span class="eyebrow-small">Resultados esperados</span>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-card-body">
+          <p>Este sitio está diseñado para que, cuando alguien te busque o te recomienden, encuentre una presencia profesional que genere confianza y facilite el contacto. El resultado en nuevos clientes depende también de cómo promuevas el sitio (redes sociales, Google Business, boca en boca).</p>
+          <p style="margin-bottom:0;">Para que puedas ver resultados reales y no solo promesas, conectamos Google Analytics de forma gratuita: podrás ver cuánta gente visita tu sitio, de dónde viene, y qué tanto usa el formulario de contacto.</p>
+        </div>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:48px;">
+        <span class="eyebrow-small">Ejemplos de nuestro trabajo</span>
+      </div>
+      <div class="portfolio-card reveal">
+        <img src="assets/portfolio-salmek.jpg" alt="Sitio web de Grupo Salmek">
+        <div class="portfolio-card-body">
+          <h3>Grupo Salmek</h3>
+          <p>Sitio de consultoría, contabilidad y fiscal, con un cuestionario interactivo de diagnóstico.</p>
+          <a href="https://salmek.netlify.app/" target="_blank" rel="noopener">salmek.netlify.app →</a>
+        </div>
+      </div>
+
+      <div class="cta-band reveal" style="margin-top:48px;">
+        <h2>¿Seguimos adelante?</h2>
+        <p>Escríbenos para confirmar tu paquete y arrancamos.</p>
+        <a href="contacto.html" class="btn btn-primary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Josst. Todos los derechos reservados.</span>
+    <span>contacto@josst.io</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="propuestas-data.js"></script>
+<script>
+  const PACKAGES = {
+    esencial: {
+      nombre: "Esencial", precio_mxn: "$1,500 – $2,000", precio_usd: "$100 – $150",
+      paginas: "Hasta 3", revisiones: "1", entrega: "~1 semana",
+      features: { diseno:true, responsive:true, whatsapp:true, formulario:false, redes:false, seo:false, resenas:false, analytics:false, mapa:false, galeria:false, citas:false, herramienta:false, hosting:false, capacitacion:false }
+    },
+    completo: {
+      nombre: "Completo", precio_mxn: "$2,500 – $4,000", precio_usd: "$150 – $250",
+      paginas: "Hasta 6", revisiones: "2", entrega: "~2 semanas",
+      features: { diseno:true, responsive:true, whatsapp:true, formulario:true, redes:true, seo:true, resenas:true, analytics:true, mapa:false, galeria:false, citas:false, herramienta:false, hosting:false, capacitacion:false }
+    },
+    premium: {
+      nombre: "Premium", precio_mxn: "$4,500 – $6,000", precio_usd: "$250 – $500",
+      paginas: "6 o más", revisiones: "3", entrega: "~3-4 semanas",
+      features: { diseno:true, responsive:true, whatsapp:true, formulario:true, redes:true, seo:true, resenas:true, analytics:true, mapa:true, galeria:true, citas:true, herramienta:true, hosting:true, capacitacion:true }
+    }
+  };
+  const FEATURE_LABELS = [
+    ["diseno", "Diseño a la medida"],
+    ["responsive", "Adaptado a celular y computadora"],
+    ["whatsapp", "Botón de WhatsApp"],
+    ["formulario", "Formulario de contacto conectado a tu correo"],
+    ["redes", "Enlaces a redes sociales"],
+    ["seo", "SEO básico"],
+    ["resenas", "Testimonios / reseñas"],
+    ["analytics", "Google Analytics"],
+    ["mapa", "Mapa de ubicación"],
+    ["galeria", "Galería de fotos"],
+    ["citas", "Reservas o citas en línea"],
+    ["herramienta", "Herramienta interactiva propia"],
+    ["hosting", "Ayuda con dominio y hosting"],
+    ["capacitacion", "Capacitación de 30 min."],
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const folio = (params.get('folio') || '').toUpperCase();
+  const data = typeof PROPUESTAS !== 'undefined' ? PROPUESTAS[folio] : null;
+
+  if(!data){
+    document.getElementById('notFound').style.display = 'block';
+  } else {
+    document.getElementById('propuestaContent').style.display = 'block';
+    document.getElementById('negocioNombre').textContent = data.negocio;
+    document.getElementById('negocioFecha').textContent = 'Fecha: ' + data.fecha;
+    document.getElementById('introTexto').textContent = data.intro;
+    document.getElementById('paqueteFlag').textContent = '★ Te recomendamos: ' + PACKAGES[data.paquete].nombre;
+
+    if(data.notaExtra){
+      document.getElementById('notaExtraCard').style.display = 'block';
+      document.getElementById('notaExtraTexto').textContent = data.notaExtra;
+    }
+
+    const order = ['esencial', 'completo', 'premium'];
+    let html = '<thead><tr><th></th>';
+    order.forEach(key => {
+      const isRec = key === data.paquete;
+      html += `<th class="${isRec ? 'highlight' : ''}">${PACKAGES[key].nombre}${isRec ? ' ★' : ''}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    html += '<tr><td>Páginas incluidas</td>';
+    order.forEach(key => { html += `<td class="${key===data.paquete?'highlight':''}">${PACKAGES[key].paginas}</td>`; });
+    html += '</tr>';
+
+    FEATURE_LABELS.forEach(([key, label]) => {
+      html += `<tr><td>${label}</td>`;
+      order.forEach(pkg => {
+        const val = PACKAGES[pkg].features[key] ? '✓' : '–';
+        html += `<td class="${pkg===data.paquete?'highlight':''}">${val}</td>`;
+      });
+      html += '</tr>';
+    });
+
+    html += '<tr><td>Rondas de revisiones</td>';
+    order.forEach(key => { html += `<td class="${key===data.paquete?'highlight':''}">${PACKAGES[key].revisiones}</td>`; });
+    html += '</tr>';
+
+    html += '<tr><td>Tiempo de entrega</td>';
+    order.forEach(key => { html += `<td class="${key===data.paquete?'highlight':''}">${PACKAGES[key].entrega}</td>`; });
+    html += '</tr>';
+
+    html += '<tr><td><strong>Precio (MXN)</strong></td>';
+    order.forEach(key => { html += `<td class="${key===data.paquete?'highlight':''}"><strong>${PACKAGES[key].precio_mxn}</strong></td>`; });
+    html += '</tr>';
+
+    html += '<tr><td>Precio (USD aprox.)</td>';
+    order.forEach(key => { html += `<td class="${key===data.paquete?'highlight':''}">${PACKAGES[key].precio_usd}</td>`; });
+    html += '</tr></tbody>';
+
+    document.getElementById('pricingTable').innerHTML = html;
+  }
+</script>
+</body>
+</html>

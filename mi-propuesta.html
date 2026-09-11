@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Consulta tu propuesta de Josst con tu folio.">
+<meta property="og:title" content="Ver mi propuesta — Josst">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Ver mi propuesta — Josst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="index.html" class="wordmark">JO<span>SST</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menú</button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="precios.html">Precios</a>
+      <a href="portafolio.html">Portafolio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:60px;">
+  <div class="wrap">
+    <span class="eyebrow">Propuestas</span>
+    <h1>¿Tienes un folio?</h1>
+    <p class="lede">Si ya platicamos sobre tu proyecto, te dimos un folio para que veas tu propuesta aquí mismo.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="portfolio-card reveal" style="max-width:520px;">
+      <div class="portfolio-card-body">
+        <label for="folioInput" style="display:block; font-weight:700; margin-bottom:10px;">Escribe tu folio</label>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input type="text" id="folioInput" placeholder="Ej. NELLY01" style="flex:1; min-width:180px; padding:12px 14px; border:2px solid var(--line); border-radius:6px; font-family:inherit; font-size:1rem; text-transform:uppercase;">
+          <button type="button" id="verPropuestaBtn" class="btn btn-primary">Ver mi propuesta</button>
+        </div>
+        <p id="folioError" style="color:var(--coral); font-size:0.9rem; margin-top:12px; min-height:1.2em;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Josst. Todos los derechos reservados.</span>
+    <span>contacto@josst.io</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="propuestas-data.js"></script>
+<script>
+  const input = document.getElementById('folioInput');
+  const btn = document.getElementById('verPropuestaBtn');
+  const err = document.getElementById('folioError');
+
+  function goToProposal(){
+    const folio = input.value.trim().toUpperCase();
+    if(!folio){
+      err.textContent = 'Escribe tu folio antes de continuar.';
+      return;
+    }
+    if(!PROPUESTAS[folio]){
+      err.textContent = 'No encontramos ese folio. Revisa que esté bien escrito o contáctanos.';
+      return;
+    }
+    window.location.href = 'propuesta.html?folio=' + encodeURIComponent(folio);
+  }
+
+  btn.addEventListener('click', goToProposal);
+  input.addEventListener('keydown', (e) => { if(e.key === 'Enter') goToProposal(); });
+</script>
+</body>
+</html>
